@@ -1,0 +1,107 @@
+body{
+	background-image:url(../assert/bg.jpg);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+.container{
+	height:100%;
+	width: 100%;
+}
+.clear{
+	clear: both;
+}
+.head{
+	height: 100px;
+	width: 100%;
+	/*background-color: #516fb7;*/
+	
+}
+.head_logo{
+	position:relative;
+    width: 500px;
+    height: 60px;
+    /*background-color: #516fb7;*/
+    margin:10px 0px 0px 24% ;
+    float:left;
+}
+.head_logo a{
+	float:left;
+}
+.head_logo a img{
+border-radius:50px;
+}
+#welcome p{
+	float:left;
+	color:white;
+    font-size: 35px;
+    margin:22px 0px 0px 20px;
+    font-family: ¿¬Ìå;
+}
+
+.body{
+	height: 730px;
+	/*background-color: #294ca0;*/
+	
+}
+.title p{
+	margin: 0px 0px  0px 150px;
+	padding-top:200px;
+	font-size: 90px;
+	font-family: LiSu;
+	float:left;
+	color:#96b1f1;
+}
+.loginbox{
+	margin:100px 0px 0px 300px;
+	padding:20px 0px 0px 20px;
+	width:350px;
+	height:300px;
+	float:left;
+	background-color: #96b1f1;
+}
+.loginbox b{
+	margin-left:110px;
+	font-size: 30px;
+	color:#e4393c;
+}
+.user{
+	margin-top:20px;
+}
+.pw{
+	margin-top:20px;
+}
+.sub{
+	margin-top:30px;
+}
+.sub input{
+	width: 332px;
+	height: 50px;
+	font-size: 24px;
+	background-color: #e4393c;
+	color:white;
+	border: 1px solid #e85356;
+}
+.sub input:HOVER{border-color: black;}
+.text{
+	font-size: 20px;
+}
+.itext{
+	border-radius:2px;
+	border:1px ;
+	height: 40px;
+	width: 250px;
+	font-size: 16px;
+}
+
+.footer{
+	height: 100px;
+	text-align: center;
+	color:#e4393c;
+}
+.links a{
+	color:#e4393c;
+}
+.copyright{
+	margin-top: 20px;
+	color:#e4393c;
+}

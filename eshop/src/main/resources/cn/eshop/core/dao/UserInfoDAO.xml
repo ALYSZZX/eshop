@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eshop.core.dao.UserInfoDAO">
+
+	<resultMap type="UserInfo" id="usermap">
+		<id column="user_id" property="userId"/>
+		<result column="user_name" property="userName"/>
+		<result column="user_sex" property="userSex"/>
+		<result column="user_phone" property="userPhone"/>
+		<result column="user_pw" property="userPw"/>
+		<result column="user_type" property="userType"/>
+	</resultMap>
+	<insert id="add" parameterType="UserInfo">
+	  insert into user_info(user_name,user_sex,user_phone,user_pw,user_type)
+	  value(#{userName},#{userSex},#{userPhone},#{userPw},#{userType})
+	</insert>
+	<select id="getUserList" parameterType="UserInfo" resultMap="usermap">
+		select * from user_info
+			<where>
+				<if test="userType!=null and userType!=''">
+					and user_type=#{userType}
+				</if>
+				<if test="userName!=null and userName!=''">
+					and user_name like #{userName}
+				</if>
+			</where>
+			order by user_id desc
+			limit #{start},#{length}
+	</select>
+	<select id="getCount" parameterType="UserInfo" resultType="long">
+		select count(1) as total from user_info
+			<where>
+				<if test="userName!=null and userName!=''">
+					and user_name like #{userName}
+				</if>
+			</where>
+	</select>
+</mapper>

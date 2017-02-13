@@ -1,0 +1,142 @@
+一、配置POM.xml文件，配置项目所需jar包
+二、配置WEB.xml:
+       配置spring监听器
+        <context-param>
+           <param-name>contextConfigLocation</param-name>
+           <param-value>classpath:application-context.xml</param-value>
+        </context-param>
+        
+        <listener>
+          <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        </listener>
+        
+       
+三、创建annotation.xml配置文件
+   <!-- spring扫描@Service -->
+	<context:component-scan base-package="cn.shop">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<context:annotation-config />
+
+
+四、创建jdbc.properties和jdbc.xml文件，并配置
+driverClass=com.mysql.jdbc.Driver
+jdbcUrl=jdbc:mysql://115.159.160.76:3306/shop?characterEncoding=UTF-8
+user=root
+password=li5201314
+
+<!-- 配置c3p0 -->
+ <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass}"/>
+        <property name="jdbcUrl" value="${jdbcUrl}"></property>
+        <property name="user" value="${user}" />
+        <property name="password" value="${password}"/>
+    </bean>
+
+ 五、配置property.xml文件，读取jdbc配置
+ <!-- 读取jdbc配置 -->
+   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+     <property name="Locations">
+        <list>
+        <!-- JDBC的配置 -->
+          <value>classpath:properties/jdbc.properties</value>
+        <!-- memcached的配置 -->  
+        </list>
+     </property>
+   </bean>
+ 
+六、配置mybatis.xml文件
+     <!-- mybatis SqlSessionFactoryBean配置 -->
+     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactory">
+       <property name="dataSource" ref="dataSource"></property>
+       <property name="mapperLocation" value="classpath:cn/shop/core/dao/*.xml"></property>
+       <property name="typeAliasesPackage" value="cn.shop.core.bean"></property>
+     </bean>
+     
+     <!-- 扫包 -->
+     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+       <property name="basePackage" value="cn.shop.core.dao"></property>
+     </bean>
+
+七、事务管理transation.xml
+<!-- spring 事务管理 -->
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSouceTransactionManager"></bean>
+  
+  <!-- 开启注解事务 -->
+  <tx:annotation-driven transaction-manager="transactionManager"/>
+ 
+springmvc spring mybatis整合
+一、创建后台配置文件springmvc-back.xml
+    <context:component-scan base-package="cn.shop" use-default-filters="false">
+            <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        </context:component-scan>
+        
+        <!-- 视图解析器 -->
+        <bean id="jspViewResolver" 
+           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+           <property name="prefix" value="/WEB-INF/back_page"/>
+           <property name="suffix" value=".jsp"/>
+           </bean>
+
+e二、创建后台配置文件springmvc-back.xml 
+	<context:component-scan base-package="cn.shop" use-default-filters="false">
+            <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        </context:component-scan>
+        
+        <!-- 视图解析器 -->
+        <bean id="jspViewResolver" 
+           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+           <property name="prefix" value="/WEB-INF/front_page"/>
+           <property name="suffix" value=".jsp"/>
+           </bean>
+三、配置web.xml
+	<!-- springgmvc 后台配置 -->
+        <servlet>
+          <servlet-name>back</servlet-name>
+          <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+          <init-param>
+              <param-name>contextConfigLocation</param-name>
+              <param-value>classpath:springmvc-back.xml</param-value>
+          </init-param>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>back</servlet-name>
+            <url-pattern>*.do</url-pattern>
+        </servlet-mapping>
+        
+         <!-- springgmvc 前台配置 -->
+        <servlet>
+          <servlet-name>front</servlet-name>
+          <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+          <init-param>
+              <param-name>contextConfigLocation</param-name>
+              <param-value>classpath:springmvc-front.xml</param-value>
+          </init-param>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>front</servlet-name>
+            <url-pattern>*.shtml</url-pattern>
+        </servlet-mapping>
+  
+ springmvc解决乱码问题
+ 使用spring的filter
+ <!--字符集过滤器 -->
+        <filter>
+           <filter-name>characterEncodingFilter</filter-name>
+           <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+           <init-param>
+               <param-name>encoding</param-name>
+               <param-value>UTF-8</param-value>
+           </init-param>
+           <init-param>
+               <param-name>forceEncoding</param-name>
+               <param-value>true</param-value>
+           </init-param>
+        </filter>
+        <filter-mapping>
+            <filter-name>characterEncodingFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+  
