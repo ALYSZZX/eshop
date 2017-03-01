@@ -14,7 +14,7 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
-        <context:component-scan base-package="cn.shop" use-default-filters="false">
+        <context:component-scan base-package="cn.eshop" use-default-filters="false">
             <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         </context:component-scan>
         
@@ -24,5 +24,31 @@
            <property name="prefix" value="/WEB-INF/back_page"/>
            <property name="suffix" value=".jsp"/>
            </bean>
-
+           
+       <!-- 从请求和响应读取/编写字符串 -->
+       <bean id ="stringHttpMessage" class ="org.springframework.http.converter.StringHttpMessageConverter">
+           <property name="supportedMediaTypes">
+               <list>
+                   <value>text/plain;charset=UTF-8</value>
+               </list>
+           </property>
+       </bean>
+           
+       <!-- 用于将对象转化为JSON -->
+       <bean id="jsonConverter" class ="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+       
+       <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+           <property name="messageConverters">
+               <list>
+                   <ref bean="stringHttpMessage"/>
+                   <ref bean="jsonConverter"/>
+               </list>
+           </property>
+       </bean>
+       
+       <!-- 上传文件 -->
+       <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+           <!-- 最大尺寸1M -->
+           <property name="maxUploadSize" value="1048576"/>
+       </bean>
 </beans>

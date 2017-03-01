@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eshop.core.dao.OrderDetailDAO">
+
+	 
+	 <insert id="add" parameterType="OrderDetail" >
+	 	insert into order_detail (order_id,goods_id,order_number,order_price)
+	 	values(#{orderId},#{goodsId},#{orderNumber},#{orderPrice})
+	 </insert>
+	 
+	 <select id="list" parameterType="OrderDetail" resultType="Map">
+		 select a.order_time, b.*, c.goods_name
+		 from order_management a,order_detail b, goods_info c
+		 where a.order_id=b.order_id and b.goods_id = c.goods_id
+		 <if test="orderId!=null">
+		 	and b.order_id=#{orderId}
+		 </if>
+	 </select>
+	 
+</mapper>

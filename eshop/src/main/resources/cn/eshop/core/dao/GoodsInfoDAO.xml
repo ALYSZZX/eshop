@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eshop.core.dao.GoodsInfoDAO">
+
+	<!-- <resultMap type="GoodsInfo" id="usermap">
+		<id column="user_id" property="userId"/>
+		<result column="user_name" property="userName"/>
+		<result column="user_sex" property="userSex"/>
+		<result column="user_phone" property="userPhone"/>
+		<result column="user_pw" property="userPw"/>
+		<result column="user_type" property="userType"/>
+	</resultMap> -->
+	 
+	 
+	 <insert id="add" parameterType="GoodsInfo">
+	 insert into goods_info(goods_name,goods_price,goods_url,goods_desc,goods_state)
+	 values(#{goodsName},#{goodsPrice},#{goodsUrl},#{goodsDesc},#{goodsState})
+	 </insert>
+	 
+	 <select id="getlist" parameterType="GoodsInfo" resultType="Map">
+	     select goods_id,goods_name,goods_price,goods_url,goods_state from goods_info
+	     <where>
+	         <if test="goodsState!=null and goodsState!=''">
+	             and goods_state=#{goodsState}
+	         </if> 
+	         <if test="goodsName!=null and goodsName!=''">
+	             and goods_name=#{goodsName}
+	         </if> 
+	     </where>
+	     order by goods_id desc
+	     <if test="start!=null and start!=0">
+	     		limit #{start},#{length}
+	     </if>
+	 </select>
+	 <select id="getcount" parameterType="GoodsInfo" resultType="Long">
+	     select count(1) from goods_info
+	     <where>
+	         <if test="goodsState!=null and goodsState!=''">
+	             and goods_state=#{goodsState}
+	         </if> 
+	         <if test="goodsName!=null and goodsName!=''">
+	             and goods_name=#{goodsName}
+	         </if> 
+	     </where>
+	 </select>
+	 
+	 <select id="getGoodsInfo" parameterType="GoodsInfo" resultType="Map">
+	     select goods_id,goods_name,goods_price,goods_url,goods_desc,goods_state from goods_info
+	     where goods_id = #{goodsId}
+	 </select>
+	 
+	 <update id="update" parameterType="GoodsInfo">
+	     update goods_info
+	     <set>
+	         <if test="goodsName!=null and goodsName!=''">
+	             goods_name=#{goodsName},
+	         </if>
+	         <if test="goodsPrice!=null">
+	             goods_price=#{goodsPrice},
+	         </if>
+	         <if test="goodsUrl!=null and goodsUrl!=''">
+	             goods_url=#{goodsUrl},
+	         </if>
+	         <if test="goodsDesc!=null">
+	             goods_desc=#{goodsDesc},
+	         </if>
+	         <if test="goodsState!=null">
+	             goods_state=#{goodsState},
+	         </if>
+	     </set>
+	     where goods_id=#{goodsId}
+	 </update>
+	 
+</mapper>

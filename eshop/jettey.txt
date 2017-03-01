@@ -1,0 +1,24 @@
+使用Jersey实现应用服务器和图片服务器分离
+restful：put 向指定的目录上传附加文件
+         delete 删除指定的资源
+         Post
+         Get
+1.先配置一个Tomcat（图片服务器），在创建一个web工程，eshopping
+    创建一个upload文件夹
+    修改Tomcat配置文件web.xml
+    <init-param>
+        <param-name>readonly<param-name>
+        <param-value>false<param-value>
+    </init-param>
+    readonly参数默认是TRUE，相当于不允许delete和put操作
+    如果不配置，http会报403错误，为了rest服务，应该设置为false
+
+2模拟应用服务器（客户端）
+所需jar
+    
+    
+    
+    
+    
+    
+    

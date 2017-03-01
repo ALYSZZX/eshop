@@ -39,7 +39,7 @@
     </pg:pages>
     <pg:next export="pageUrl" ifnull="${true }">
     	<c:if test="${pageUrl!=null }" >
-    		<a href="${pageUrl }" class="next">下一页</a>
+    		<a href="${pageUrl}" class="next">下一页</a>
     	</c:if>
     </pg:next>
     <pg:last >

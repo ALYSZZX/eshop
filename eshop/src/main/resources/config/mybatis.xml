@@ -17,7 +17,7 @@
      <!-- mybatis SqlSessionFactoryBean配置 -->
      <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
        <property name="dataSource" ref="dataSource"></property>
-       <property name="mapperLocations" value="classpath:cn/shop/core/dao/*.xml"></property>
+       <property name="mapperLocations" value="classpath:cn/eshop/core/dao/*.xml"></property>
        <property name="typeAliasesPackage" value="cn.eshop.core.bean"></property>
      </bean>
      

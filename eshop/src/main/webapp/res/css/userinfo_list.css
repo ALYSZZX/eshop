@@ -1,3 +1,8 @@
+body{
+	text-align: center;
+	
+}
+
 #inp lable{
 	font-size:29px;
 	float:left;
@@ -68,4 +73,20 @@
 	width: 150px;
 	height: 50px;
 	font-size: 24px;
+}
+
+
+#baseg{
+	margin-left: 10%;
+}
+
+#baseg lable{
+	font-size: 24px;
+	padding-top: 15px;
+}
+#baseg input{
+	margin:10px;
+	height: 24px;
+	width: 200px;
+	font-size: 20px;
 }

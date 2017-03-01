@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	alert('${info}');
-	window.location="<%=basePath%>user/list.do";
+	window.location= "<%=basePath%>user/list.do";
 </script>
 </head>
 <body>

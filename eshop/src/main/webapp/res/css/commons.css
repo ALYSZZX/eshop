@@ -1,0 +1,118 @@
+.head1{
+	width: 100%;
+}
+.webtitle {
+	float: left;
+	font-size: 50px;
+	font-family: lisu;
+	margin-left: 20%;
+}
+
+.headmenu {
+	float: left;
+	margin-left: 20%;
+	margin-top:20px;
+}
+
+.headmenu a {
+	margin-left: 30px;
+	font-size: 25px;
+	color:black;
+}
+
+.clear {
+	clear: both;
+}
+
+#goods{
+	margin-top:50px;
+	width: 100%;
+	text-align: center;
+}
+.container{
+	width: 80%;
+	margin-left: 10%;
+}
+.price{
+	color: red;
+}
+
+.footer{
+
+	height: 100px;
+	text-align: center;
+	color:#516fb7;
+}
+
+.footer2{
+    padding-top: 20px;
+}
+.links a{
+	color:#e4393c;
+}
+.copyright{
+	margin-top: 20px;
+	color:#e4393c;
+}
+#foot{
+	height: 100px;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+#goodsinfo{
+	height: 400px;
+	width: 100%;
+	background-color: #F8F8F8;
+}
+#goodsdesc{
+	margin-top:0px;
+	width: 100%;
+	background-color: #F8F8F8;
+	text-align: center;
+}
+.desctitle{
+	margin-top:0px;
+	background-color: #516fb7;
+	font-size: 30px;
+}
+
+/* reg.jsp*/
+#logo{
+	height: 100px;
+	width: 100%;
+}
+#message{
+	background-color:#FFFFFF;
+	height: 500px;
+	width: 50%;
+	margin-left: 25%;
+}
+.inp{
+	margin-top:20px;
+	height: 40px;
+	width: 250px;
+	font-size: 25px;
+}
+.tlabel{
+	margin-top:20px;
+	font-size: 40px;
+	font-family: lisu;
+}
+.logoimg{
+	width:100px;
+	height:100px;
+	margin-left: 0px;
+}
+
+/* login.jsp*/
+.logininfo{
+	font-size: 30px;
+	font-family: 
+}
+
+/*shopcar*/
+.carfooter{
+	width: 90%;
+	margin-left: 5%;
+}

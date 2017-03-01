@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset=UTF-8>
+<link rel="stylesheet" href="../res/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../res/css/commons.css" />
+<link rel="stylesheet" type="text/css" href="../res/css/animate.min.css" />
+<title>商品详细信息</title>
+</head>
+<body>
+	<section>
+		<div class="head1">
+			<div class="webtitle">网上商城</div>
+			<div class="headmenu">
+				<a href="../front/list.shtml">首页</a> 
+			    <a href="../	front/showcar.shtml"> <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>购物车
+				</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</section>
+	<section id="goodsinfo">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<img alt="" src="${imgUrl}${goods_url}" height="400px"
+						width="400px">
+				</div>
+				<div class="col-sm-6">
+					<h1>${goods_name }</h1>
+					<p class="desc">${goods_name }</p>
+					<hr />
+					<p class="price">￥${goods_price }</p>
+					<hr />
+					<a href="../front/car/${goods_id}.shtml" class="btn btn-warning btn-lg">加入购物车</a> <a
+						class="btn btn-success btn-lg">直接购买</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="goodsdesc">
+		<hr />
+		<p class="desctitle">详情描述</p>
+		<hr />
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">${goods_desc}</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

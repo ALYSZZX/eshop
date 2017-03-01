@@ -29,4 +29,29 @@ public interface UserInfoDAO {
 	 * @return long
 	 */
 	public long getCount(UserInfo user);
+	
+	/**
+	 *根据条件获取个人信息 
+	 *@param 查询条件
+	 *@return 返回个人信息
+	 **/
+	public UserInfo getUserInfo(UserInfo user);
+	
+	/**
+	 * 修改用户信息
+	 * @param user
+	 */
+	public int update(UserInfo user);
+	/***
+	 *删除用户信息 
+	 */
+	public int 	delete(UserInfo user);	
+	
+	/**
+	 * 用户登录
+	 * @param user
+	 * @return
+	 */
+	public UserInfo userLogin(UserInfo user);
+	
 }

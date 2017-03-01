@@ -14,6 +14,32 @@
 	  insert into user_info(user_name,user_sex,user_phone,user_pw,user_type)
 	  value(#{userName},#{userSex},#{userPhone},#{userPw},#{userType})
 	</insert>
+	<update id="update" parameterType="UserInfo">
+	    update user_info
+	    <set>
+	        <if test="userName!=null">
+	            user_name=#{userName},
+	        </if>
+	        <if test="userSex!=null">
+	            user_sex =#{userSex},
+	        </if>
+	        <if test="userPhone!=null">
+	            user_phone=#{userPhone},
+	        </if>
+	        <if test="userPw!=null">
+	            user_pw=${userPw},
+	        </if>
+	        <if test="userType!=null">
+	            user_type=#{userType}
+	        </if>
+	    </set>
+	    where user_id=#{userId}
+	</update>
+	<delete id="delete" parameterType="UserInfo">
+	    delete from user_info where user_id=#{userId}
+	</delete>
+	
+	
 	<select id="getUserList" parameterType="UserInfo" resultMap="usermap">
 		select * from user_info
 			<where>
@@ -35,4 +61,22 @@
 				</if>
 			</where>
 	</select>
+	<select id = "getUserInfo" parameterType="UserInfo" resultMap="usermap">
+	    select * from user_info 
+	    <where>
+	        <if test="userId !=null and userId !=''">
+	            and user_id = #{userId}
+	        </if>
+	        <if test="userPhone !=null and userPhone !=''">
+	            and user_phone = #{userPhone}
+	        </if>
+	        <if test="userPw !=null and userPw !=''">
+	            and user_pw = #{userPw}
+	        </if>
+	    </where>
+	</select>
+	<select id = "userLogin" parameterType="UserInfo" resultMap="usermap">
+	    select * from user_info where user_phone = #{userPhone} and user_pw = #{userPw}
+	</select>
+	
 </mapper>

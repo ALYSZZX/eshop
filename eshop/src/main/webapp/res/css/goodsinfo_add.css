@@ -1,0 +1,60 @@
+body{
+	text-align: center;
+	height:100%;
+}
+.addform{
+	height: 100%;
+}
+.goodsup{
+	height: 40%;
+}
+.goodsdown{
+	height: 50%;
+}
+
+.text{
+	float:left;
+	width:50%;
+}
+.rimg{
+	float:left;
+	width: 150px;
+}
+
+#pp{
+	height:50px;
+	background-color: #516fb7;
+	font-size: 30px;
+}
+#pp p{
+	padding: 10px;
+}
+
+.subres{
+	margin-left: 10%;
+}
+.subres input{
+	width: 150px;
+	height: 50px;
+	font-size: 24px;
+}
+
+.clear{
+	clear:both;
+}
+#baseg{
+	margin-left: 5%;
+	margin-top:	10px;
+	float:left;
+}
+
+#baseg lable{
+	font-size: 24px;
+	padding-top: 20px;
+}
+#baseg input{
+	margin:10px;
+	height: 24px;
+	width: 200px;
+	font-size: 20px;
+}

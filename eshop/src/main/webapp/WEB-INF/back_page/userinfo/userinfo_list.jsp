@@ -12,21 +12,26 @@
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="<%=basePath%>res/css/userinfo_list.css">
+<link type="text/css" rel="stylesheet" href="<%=basePath%>res/css/bootstrap.min.css">
+<script type="text/javascript" src="<%=basePath%>res/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>res/js/bootstrap.min.js"></script>
 <title>用户管理</title>
 </head>
 <body>
-		<form action="user/list.do" method="post">
+		<form action="<%=basePath%>user/list.do" method="post">
 			<div class="query">
 				<div id="inp">
 					<lable>姓名:</lable><input type="text" name="userName" placeholder="请输入姓名" />
 				</div>
 				<div id="sub">
 		     		<input type="submit" value="查询">
-		     		<a href="user/loadadd.do">添加用户</a>
+		     		<a href="<%=basePath%>user/loadadd.do">添加用户</a>
+		            <!-- Button trigger modal -->
 		     	</div>
-		     	<div id="clear"></div>
 		    </div>
 		 </form>
+		<input type="button" value="导入用户信息" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" />
+		<div id="clear"></div>
 			<table border="1px" width="1000px">
 					<tr height="50px">
 						<th>用户编号</th>
@@ -45,7 +50,10 @@
 						<th>${user.userPhone }</th>
 						<th>${user.userPw }</th>
 						<th>${user.userType }</th>
-						<th><a href="">修改&nbsp&nbsp</a>删除</th>
+						<th>
+						   <a href="<%=basePath %>user/loadupdate.do?userId=${user.userId}">修改</a>
+                           <a href="javascript:void(0)" onclick="del('${user.userId}')">删除</a>
+                        </th>
 					</tr>
 				</c:forEach>
 			</table>
@@ -56,5 +64,37 @@
 					<jsp:include page="../../../res/jsp/pager_tag.jsp" flush="true"/>
 				</pg:pager>
 			</div>
+			
+			<!-- Modal -->
+			<form action="<%=basePath %>user/imuser.do" method="post" enctype="multipart/form-data">
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">用户信息--Excel导入</h4>
+				      </div>
+				      <div class="modal-body">
+				        <input type="file" name="upfile">
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				        <button type="submit" class="btn btn-primary">导入数据</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</form>
+			<!-- Excel导入结束 -->
+			
+			<script type="text/javascript">
+			    function del(userId){
+			    	if(confirm("你确定要删除吗?")){
+			    	    window.location="<%=basePath %>user/delete.do?userId="+userId;
+			    	}
+			    }
+			</script>
+			
+			
 </body>
 </html>

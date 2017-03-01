@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.eshop.core.bean.UserInfo;
 import cn.eshop.core.service.IUserInfoService;
@@ -27,10 +30,12 @@ public class UserInfoController extends BaseController{
 	 */
 	@RequestMapping("user/add.do")
 	public String add(UserInfo user ,Model model){
+
 		String info="操作失败";
 		try{
-			service.addUser(user);
-			info="操作成功";
+			boolean b =service.addUser(user);
+			if (b)
+			    info="操作成功";
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -79,6 +84,86 @@ public class UserInfoController extends BaseController{
 	 */
 	@RequestMapping("user/loadadd.do")
 	public String loadadd(){
+	
 		return "/userinfo/userinfo_add";
+	}
+	
+	/**
+	 * 加载修改页面
+	 * @param user
+	 * @param model
+	 * @return 
+	 **/
+	@RequestMapping("user/loadupdate.do")
+	public String loadupdate(UserInfo user,Model model){
+		
+		model.addAttribute("user", service.getUserInfo(user));
+		return "/userinfo/userinfo_update";
+	}
+	/**
+	 *保存修改后信息 
+	 **/
+	@RequestMapping("user/update.do")
+	public String update(UserInfo user,Model model){
+		String info ="操作失败";
+		try{
+			service.update(user);
+			info ="操作成功";
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		model.addAttribute("info", info);
+		return "/userinfo/userinfo_info";
+	}
+	
+	/***
+	 *删除用户信息
+	 *@param user
+	 *@param model
+	 *@return 
+	 */
+	@RequestMapping("user/delete.do")
+	public String delete(UserInfo user,Model model){
+		String info ="操作失败";
+		try{
+			service.delete(user);
+			info="操作成功";
+		}catch(Exception e){
+			e.printStackTrace();			
+		}
+		model.addAttribute("info", info);
+		return "/userinfo/userinfo_info";
+	} 
+	
+	/**
+	 * 手机验证 异步ajax
+	 ***/
+	@RequestMapping("user/userAjax.do")
+	public @ResponseBody String userAjax(UserInfo user){
+		UserInfo puser = service.getUserInfo(user);
+		if(puser!=null){
+			return "该手机号码已存在，请重新输入";
+		}else{
+		  return "恭喜您，该手机号码可以使用";
+		}
+	}
+	
+	
+	/***
+	 *导入用户Excel到数据库
+	 *@param
+	 *@return 
+	 */
+	@RequestMapping("user/imuser.do")
+	public String uploadExcel(@RequestParam(value="upfile", required = false) MultipartFile file,Model model){
+		String info ="操作失败";
+		try{
+			service.uploadExcel(file.getInputStream());
+			info="操作成功";
+		}catch(Exception e){
+			e.printStackTrace();			
+		}
+		model.addAttribute("info", info);
+		return "/userinfo/userinfo_info";
 	}
 }

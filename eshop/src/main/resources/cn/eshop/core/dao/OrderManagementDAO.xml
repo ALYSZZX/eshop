@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eshop.core.dao.OrderManagementDAO">
+
+	 
+	 <insert id="addorder" parameterType="OrderManagement"  useGeneratedKeys="true"  keyProperty="orderId">
+	 	insert into order_management (user_id,consignee_id,order_time,order_total)
+	 	values(#{userId},#{consigneeId},#{orderTime},#{orderTotal})
+	 </insert>
+	 <select id="list" parameterType="OrderManagement" resultType="Map">
+	 	select a.user_name,b.*,c.consignee_name
+	 	from user_info a,order_management b,consignee_management c
+	 	where a.user_id=b.user_id and b.consignee_id=c.consignee_id
+	 	<if test="userId!=null">
+	 		and a.user_id=#{userId}
+	 	</if>
+	 </select>
+</mapper>

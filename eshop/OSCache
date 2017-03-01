@@ -1,0 +1,57 @@
+OScache是什么？
+是一个高性能的J2EE缓存框架，缓存部分jsp或者http请求。任何Java对象都可以缓存
+以key value方式来存储
+也可以永久缓存：缓存可以随意写入磁盘
+支持集群
+
+使用OSCache：
+1.把所需jar拷贝lib
+2.把OScache安装目录下oscache.properties放入src目录下
+3.引入<%@taglib prefix="oscache" uri="http://www.opensymphony.com/oscache" %>
+4.页面添加缓存
+   <oscache:cache>
+   缓存时间<%=new Date() %><br/>
+   </oscache:cache>
+   
+
+key:http://localhost:8080/oscache_test/?id=1
+value="index.jsp"
+缓存key将以请求的url+查询字符串组成 
+缓存默认存放在application范围，缓存时间默认为3600秒  -1小时
+
+缺点：数据更新不及时
+
+<oscache:cache key="name" scope="session/application" time="10">
+不再以URL+查询字符串组成 
+设置key以后每次都得到一份缓存
+
+全局缓存配置:
+web.xml
+
+    <filter>
+        <filter-name>CacheFilter</filter-name>
+        <filter-class>com.opensymphony.oscache.web.filter.CacheFilter</filter-class>
+        <init-param>
+            <param-name>time</param-name>
+            <param-value>5</param-value>
+		</init-param>
+        <init-param>
+            <param-name>scope</param-name>
+            <param-value>application</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>CacheFilter</filter-name>
+	    <url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	
+
+Oscache配置属性介绍
+
+指定缓存的容量 cache.capacity = 1000
+是否使用内存缓存 ，默认为true：oscache.memory=false;
+如果指定硬盘缓存：
+cache.memory=false
+cache.capacity=1000
+cache.path=D:\\cache
+cache.persistence.class=com.opensmphony.oscache.plugins.diskper
