@@ -78,7 +78,7 @@
 }
 
 /* reg.jsp*/
-#logo{
+.logo1{
 	height: 100px;
 	width: 100%;
 }
@@ -115,4 +115,51 @@
 .carfooter{
 	width: 90%;
 	margin-left: 5%;
+}
+
+.aligncenter{
+	text-align: center;
+}
+
+
+/*index all*/
+.indexleft{
+	width:305px;
+	min-height:600px;
+	background-color: #FFF;
+	position:absolute;
+  	left:190px;
+  	top:71px;
+  	z-index:1;
+}
+.indexright{
+	width: 80%;
+	margin-left: 10%;
+}
+.classic{
+	width: 205px;
+	min-height:600px;
+	background-color: #FAF0E6;
+	margin-left: 105px;
+	padding-top:100px;
+}
+.classul{
+	width: 200px;
+	min-height: 400px;
+}
+.classui{
+	min-height: 30px;
+	width: 160px;
+	list-style-type:none;
+	font-size: 20px;
+	margin-top: 20px;
+}
+.classui a{
+	color:#000;
+	
+}
+li:hover{
+	color:#1E90F; 
+	text-decoration:underline;
+	font-weight:bold;
 }

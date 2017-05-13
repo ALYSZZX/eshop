@@ -58,15 +58,25 @@ with (thisform)
 			<div class="text">
 				<div id="baseg">
 					<lable>商品名称</lable>
-					<input type="text" name="goodsName"  placeholder="请输入商品名称" value="${goods.goods_name } "/>
+					<input type="text" name="goodsName"   value="${goods.goods_name } "/>
 					<span id ="nameinfo" style="color:red"></span>
 				</div>
 				<div id="baseg">
 					<lable>商品价格</lable>
-					<input type="text" name="goodsPrice"  placeholder="请输入商品价格"  value="${goods.goods_price }" />
+					<input type="text" name="goodsPrice"   value="${goods.goods_price }" />
 					<span id ="nameinfo" style="color:red"></span>
 				</div>
 				<div class="clear"></div>
+				<div id="baseg">
+					<lable>商品库存</lable>
+					<input type="text" name="goodsCount"   value="${goods.goods_count }" />
+					<span id ="nameinfo" style="color:red"></span>
+				</div>
+				<div id="baseg">
+					<lable>商品类型</lable>
+					<input type="text" name="goodsType"  value="${goods.goods_type } "/>
+					<span id ="nameinfo" style="color:red"></span>
+				</div>
 				<div id="baseg">
 					<lable>商品图片</lable>
 					<input type="file" name="shopimg" onchange="uploadImg()"/>

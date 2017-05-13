@@ -10,6 +10,7 @@
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="<%=basePath%>res/css/login.css">
+<script type="text/javascript" src="<%=basePath%>res/js/jquery-1.11.2.min.js"></script>
 <title>后台登录</title>
 </head>
 <body class="mainbody">
@@ -35,19 +36,19 @@
 		   		      <b>账号登录</b>
 		   	     <div class="user">
 		   	    		<label class="text">用户名:</label> 
-		   	    		<input type="text" name="username" placeholder="请输入账号!" class="itext">
+		   	    		<input type="text" name="userName" placeholder="请输入账号!" class="itext" id="userName">
 		   	     </div>
 		   	       <div class="pw">
 		   	     		<label class="text">密&nbsp码:</label>
-		   	     		<input type="password" name="password" placeholder="请输入密码!" class="itext">
+		   	     		<input type="password" name="userPw" placeholder="请输入密码!" class="itext" id ="userPw">
 		   	     </div>
 		   	     <div class="sub">
-		   	     		<input type="submit" value="登录" >
+		   	     		<input type="submit" value="登录" onclick="checkValue();">
 		   	     </div>
 		   	</div>
 		   	 <div class="clear"></div>
-		</div>
 		</form>
+		</div>
 		<div class="footer">
 		<div class="links">
             <a rel="nofollow" target="_blank" href="">
@@ -97,5 +98,16 @@
         </div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	 function checkValue(){
+		var name = $("#userName").val();
+		var pw = $("#userPw").val();
+		if(name !="" &&name !=undefined && pw !="" &&pw !=undefined){
+			return true;
+		}
+		alert("账号或密码不能为空!");
+		return false;
+	}
+	</script>
 </body>
 </html>

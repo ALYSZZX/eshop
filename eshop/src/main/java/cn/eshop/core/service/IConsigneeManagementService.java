@@ -13,10 +13,11 @@ import cn.eshop.core.bean.ConsigneeManagement;
 public interface IConsigneeManagementService {
 
 	/**
-	 * 获取所有收货人
+	 * 获取单个用户所有收货人
 	 * @param cm
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<Map> getlist(ConsigneeManagement cm);
 	/**
 	 * 添加收货人
@@ -38,5 +39,14 @@ public interface IConsigneeManagementService {
 	 * @param cm
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	public Map getInfo(ConsigneeManagement cm);
+	
+	/**
+	 * 获取所有收货人
+	 * @param cm
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> getALl();
 }

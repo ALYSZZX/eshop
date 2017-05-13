@@ -123,6 +123,7 @@ public class OrderController {
 	 * @param model
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("queryOrder.shtml")
 	public String queryOrder(OrderManagement om,HttpSession session,Model model){
 		

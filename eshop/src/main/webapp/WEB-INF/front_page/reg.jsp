@@ -14,7 +14,7 @@
 <title>用户注册</title>
 </head>
 <body style="background-color: #F5F5F5;width: 100%;margin: 0px;">
-	<section id="logo">
+	<div class="container">
 		<div class="row">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-6">
@@ -24,9 +24,9 @@
 			</div>
 			<div class="col-sm-3"></div>
 		</div>
-	</section>
+	</div>
 	<form action="<%=basePath %>front/reg.shtml" method="post">
-	<section id="message">
+	<div id="message">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3"></div>
@@ -46,7 +46,8 @@
 			<div class="col-sm-3"></div>
 		</div>
 		<hr>
-	</section>
+	</div>
+	</div>
 	</form>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

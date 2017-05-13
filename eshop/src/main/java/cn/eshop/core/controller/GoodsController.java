@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.Printer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -143,6 +142,7 @@ public class GoodsController extends BaseController{
 			if(goodsinfo!=null){
 				goodsinfo.setGoodsState(Common.GOODS_STATE_INIT);
 			}
+			//System.out.println(goodsinfo.getGoodsType());
 			service.add(goodsinfo);
 			info="操作成功";
 		} catch (Exception e) {
@@ -153,6 +153,7 @@ public class GoodsController extends BaseController{
 		return "/goodsinfo/goodsinfo_add";
 	}
 
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("list.do")
 	public String list(GoodsInfo info,Model model,HttpServletRequest request){
 
@@ -178,6 +179,7 @@ public class GoodsController extends BaseController{
 	 * @param model
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("goodsinfo.do")
 	public String getInfo(GoodsInfo info,Model model){
 
@@ -194,6 +196,7 @@ public class GoodsController extends BaseController{
 	 * @param model
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("loadupdate.do")
 	public String loadupdate(GoodsInfo info,Model model){
 
@@ -259,6 +262,7 @@ public class GoodsController extends BaseController{
 	 * @param request
 	 * @return
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("upgoods.do")
 	public String upGoods(GoodsInfo goodsinfo,Model model,HttpServletRequest request){
 		String info ="上架失败";

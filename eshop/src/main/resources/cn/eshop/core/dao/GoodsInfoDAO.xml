@@ -13,18 +13,21 @@
 	 
 	 
 	 <insert id="add" parameterType="GoodsInfo">
-	 insert into goods_info(goods_name,goods_price,goods_url,goods_desc,goods_state)
-	 values(#{goodsName},#{goodsPrice},#{goodsUrl},#{goodsDesc},#{goodsState})
+	 insert into goods_info(goods_name,goods_price,goods_url,goods_desc,goods_state,goods_count,goods_type)
+	 values(#{goodsName},#{goodsPrice},#{goodsUrl},#{goodsDesc},#{goodsState},#{goodsCount},#{goodsType})
 	 </insert>
 	 
 	 <select id="getlist" parameterType="GoodsInfo" resultType="Map">
-	     select goods_id,goods_name,goods_price,goods_url,goods_state from goods_info
+	     select goods_id,goods_name,goods_price,goods_url,goods_state,goods_count,goods_type from goods_info
 	     <where>
 	         <if test="goodsState!=null and goodsState!=''">
 	             and goods_state=#{goodsState}
-	         </if> 
+	         </if>
+	         <if test="goodsType!=null and goodsType!=''">
+	             and goods_type=#{goodsType}
+	         </if>  
 	         <if test="goodsName!=null and goodsName!=''">
-	             and goods_name=#{goodsName}
+	             and goods_name LIKE concat(concat('%', #{goodsName}),'%')
 	         </if> 
 	     </where>
 	     order by goods_id desc
@@ -45,7 +48,7 @@
 	 </select>
 	 
 	 <select id="getGoodsInfo" parameterType="GoodsInfo" resultType="Map">
-	     select goods_id,goods_name,goods_price,goods_url,goods_desc,goods_state from goods_info
+	     select goods_id,goods_name,goods_price,goods_url,goods_desc,goods_state,goods_count,goods_type from goods_info
 	     where goods_id = #{goodsId}
 	 </select>
 	 
@@ -66,6 +69,12 @@
 	         </if>
 	         <if test="goodsState!=null">
 	             goods_state=#{goodsState},
+	         </if>
+	         <if test="goodsCount!=null">
+	             goods_count=#{goodsCount},
+	         </if>
+	         <if test="goodsType!=null">
+	             goods_type=#{goodsType},
 	         </if>
 	     </set>
 	     where goods_id=#{goodsId}

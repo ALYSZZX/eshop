@@ -76,21 +76,13 @@ body{
 	font-size: 40px;
 	text-decoration: none;
 	font-weight: bold;
+	color:blue;
 }
 #userm1 {
 	font-size: 30px;
 	text-decoration: none;
-	color:blue;
 }
 #userm2 {
-	font-size: 30px;
-	text-decoration: none;
-}
-#userm3 {
-	font-size: 30px;
-	text-decoration: none;
-}
-#userm4 {
 	font-size: 30px;
 	text-decoration: none;
 }
@@ -99,6 +91,7 @@ body{
 	font-size: 40px;
 	text-decoration: none;
 	font-weight: bold;
+	color:blue;
 }
 #goodsm1{
 	font-size: 30px;
@@ -108,18 +101,11 @@ body{
 	font-size: 30px;
 	text-decoration: none;
 }
-#goodsm3{
-	font-size: 30px;
-	text-decoration: none;
-}
-#goodsm4{
-	font-size: 30px;
-	text-decoration: none;
-}
 .order a{
 	font-size: 40px;
 	text-decoration: none;
 	font-weight: bold;
+	color:blue;
 }
 #orderm1{
 	font-size: 30px;
@@ -134,7 +120,6 @@ body{
 
 
 .footer{
-
 	height: 10%;
 	text-align: center;
 	color:#516fb7;

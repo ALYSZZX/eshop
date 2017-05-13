@@ -18,6 +18,7 @@ public class ConsigneeManagementServiceImpl implements IConsigneeManagementServi
 	@Autowired
 	private ConsigneeManagementDAO dao;
 	
+	@SuppressWarnings("rawtypes")
 	public List<Map> getlist(ConsigneeManagement cm) {
 		// TODO Auto-generated method stub
 		return dao.getlist(cm);
@@ -39,9 +40,17 @@ public class ConsigneeManagementServiceImpl implements IConsigneeManagementServi
 	}
 
 
+	@SuppressWarnings("rawtypes")
 	public Map getInfo(ConsigneeManagement cm) {
 		
 		return dao.getInfo(cm);
+	}
+
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List<Map> getALl() {
+		return dao.getAll();
 	}
 
 }

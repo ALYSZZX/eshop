@@ -1,7 +1,5 @@
 package cn.eshop.userinfo;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,7 @@ public class UserTest {
 	@Autowired
 	private IUserInfoService service;
 	
-	@Test
+	/*@Test
 	public void testAdd(){
 		UserInfo user = new UserInfo();
 		user.setUserName("华安");
@@ -36,7 +34,7 @@ public class UserTest {
 			System.out.println(info);
 		}
 	}
-	
+	*/
 	@Test
 	public void testCount(){
 		UserInfo user = new UserInfo();

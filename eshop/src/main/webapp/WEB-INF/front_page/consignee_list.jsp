@@ -73,7 +73,7 @@
 			</form> 
 		</div>
 	</div>
-	<script type="text/javascript" href="<%=basePath%>res/js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>res/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			//添加

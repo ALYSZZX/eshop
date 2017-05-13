@@ -14,7 +14,7 @@ body{
 
 .text{
 	float:left;
-	width:50%;
+	width:80%;
 }
 .rimg{
 	float:left;
@@ -53,6 +53,12 @@ body{
 	padding-top: 20px;
 }
 #baseg input{
+	margin:10px;
+	height: 24px;
+	width: 200px;
+	font-size: 20px;
+}
+#baseg select{
 	margin:10px;
 	height: 24px;
 	width: 200px;

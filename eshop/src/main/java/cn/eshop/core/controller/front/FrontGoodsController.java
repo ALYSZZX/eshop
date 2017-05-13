@@ -4,14 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.eshop.core.bean.GoodsInfo;
 import cn.eshop.core.bean.UserInfo;
@@ -41,6 +44,7 @@ public class FrontGoodsController {
 	 * @param model
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("list.shtml")
 	public String list(Model model){
 		
@@ -54,12 +58,35 @@ public class FrontGoodsController {
 				
 		model.addAttribute("goodslist", list);
 		
+		return "/indexAll";
+	}
+	/**
+	 * 分类信息信息
+	 * @param model
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	@RequestMapping("classiclist.shtml")
+	public String classicList(@RequestParam String classic,Model model){
+		
+		GoodsInfo info = new GoodsInfo();
+
+		info.setGoodsState(Common.GOODS_STATE_YES);
+		info.setGoodsType(classic);
+		
+		List<Map> list=goodsService.getlist(info);
+		
+		//System.out.println(classic);
+				
+		model.addAttribute("goodslist", list);
+		
 		return "/index";
 	}
 	
 	/**
 	 * 显示商品详细信息
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping(value="{goodsId}.shtml",method=RequestMethod.GET)
 	public String getinfo(@PathVariable Integer goodsId,Model model){
 		//System.out.println("商品编号-"+goodsId);
@@ -146,6 +173,7 @@ public class FrontGoodsController {
 	 * @param model
 	 * @return
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value="car/{goodsId}.shtml",method=RequestMethod.GET)
 	public String shopcar(@PathVariable Integer goodsId,Model model,HttpSession session){
 	
@@ -168,6 +196,7 @@ public class FrontGoodsController {
 	 * @param model
 	 * @return
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("deleteGoods.shtml")
 	public String deleteGoods( Integer[] goodsIds,HttpSession session){
 		
@@ -185,6 +214,7 @@ public class FrontGoodsController {
 	 * 查看购物车
 	 * @return
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("showcar.shtml")
 	public String showcar(HttpSession session){
 		Map<Integer,Map> cars = (Map<Integer,Map>) session.getAttribute("cars");

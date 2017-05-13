@@ -54,4 +54,11 @@ public interface UserInfoDAO {
 	 */
 	public UserInfo userLogin(UserInfo user);
 	
+	/**
+	 * 管理员登录
+	 * @param user
+	 * @return
+	 */
+	UserInfo adminLogin(UserInfo user);
+	
 }

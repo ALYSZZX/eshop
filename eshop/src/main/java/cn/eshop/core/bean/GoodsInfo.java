@@ -21,14 +21,36 @@ public class GoodsInfo extends BaseBean{
 	
 	private String goodsState;
 	
+	private Integer goodsCount;
+	
+
+	private String goodsType;
+	
+
 	@Override
 	public String toString() {
 		return "GoodsInfo [goodsId=" + goodsId + ", goodsName=" + goodsName
 				+ ", goodsPrice=" + goodsPrice + ", goodsUrl=" + goodsUrl
 				+ ", goodsDesc=" + goodsDesc + ", goodsState=" + goodsState
+				+ ", goodsCount=" + goodsCount + ", goodsType=" + goodsType
 				+ "]";
 	}
 
+	public Integer getGoodsCount() {
+		return goodsCount;
+	}
+	
+	public void setGoodsCount(Integer goodsCount) {
+		this.goodsCount = goodsCount;
+	}
+	
+	public String getGoodsType() {
+		return goodsType;
+	}
+	
+	public void setGoodsType(String goodsType) {
+		this.goodsType = goodsType;
+	}
 	public Integer getGoodsId() {
 		return goodsId;
 	}

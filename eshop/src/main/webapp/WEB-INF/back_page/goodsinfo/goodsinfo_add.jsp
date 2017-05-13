@@ -67,6 +67,25 @@ with (thisform)
 				</div>
 				<div class="clear"></div>
 				<div id="baseg">
+					<lable>商品库存</lable>
+					<input type="text" name="goodsCount"  placeholder="请输入商品库存"  />
+					<span id ="nameinfo" style="color:red"></span>
+				</div>
+				<div id="baseg">
+					<lable>商品类型</lable>
+					<select name="goodsType">
+						<option value="10">家用电器</option>
+						<option value="20">数码3C</option>
+						<option value="30">电脑办公</option>
+						<option value="40">男女服饰</option>
+						<option value="50">鞋靴箱包</option>
+						<option value="60">食品烟酒</option>
+						<option value="70">图书音像</option>
+						<option value="80">户外运动</option>
+					</select>
+					<span id ="nameinfo" style="color:red"></span>
+				</div>
+				<div id="baseg">
 					<lable>商品图片</lable>
 					<input type="file" name="shopimg" onchange="uploadImg()"/>
 					<input type="hidden" name="goodsUrl" id="goodsUrl"/>
@@ -109,7 +128,7 @@ with (thisform)
 	    			}
 	    	};
 	    	$("#goodsform").ajaxSubmit(options);
-	    }
+	    };
 	    
 	</script>
 	

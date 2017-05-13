@@ -77,19 +77,19 @@ public class UserInfoServiceImpl implements IUserInfoService{
 			String userName = namecell.getContents();	
 			user.setUserName(userName);
 			//性别
-			Cell sexcell = sheet.getCell(0, i);
+			Cell sexcell = sheet.getCell(1, i);
 			String userSex = sexcell.getContents();	
 			user.setUserSex(userSex);
 			//电话
-			Cell phonecell = sheet.getCell(0, i);
+			Cell phonecell = sheet.getCell(2, i);
 			String userPhone = phonecell.getContents();	
 			user.setUserPhone(userPhone);
 			//密码
-			Cell pwcell = sheet.getCell(0, i);
+			Cell pwcell = sheet.getCell(3, i);
 			String userPw = pwcell.getContents();	
 			user.setUserPw(userPw);
 			//类型
-			Cell typecell = sheet.getCell(0, i);
+			Cell typecell = sheet.getCell(4, i);
 			String userType = typecell.getContents();	
 			user.setUserType(userType);
 			
@@ -104,6 +104,14 @@ public class UserInfoServiceImpl implements IUserInfoService{
 	@Transactional(readOnly=true)
 	public UserInfo userLogin(UserInfo user) {
 		return userdao.userLogin(user);
+	}
+
+	/**
+	 * 管理员登录
+	 */
+	@Transactional(readOnly=true)
+	public UserInfo adminLogin(UserInfo user) {
+		return userdao.adminLogin(user);
 	}
 
 }

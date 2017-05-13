@@ -26,6 +26,7 @@
 				<div class="col-sm-6">
 					<h1>${goods.goods_name }</h1>
 					<p class="desc">${goods.goods_name }</p><hr/>
+					<p class="desc">库存: ${goods.goods_count }</p><hr/>
 					<p class="price">￥${goods.goods_price }</p><hr/>
 					<a class="btn btn-warning btn-lg">加入购物车</a>
 					<a class="btn btn-success btn-lg">直接购买</a>

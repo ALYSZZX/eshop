@@ -49,6 +49,7 @@ public class OrderManagementServiceImpl implements IOrderManagementService{
 	/**
 	 * 查询订单
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<Map> list(OrderManagement om) {
 		
 		return omdao.list(om);
@@ -58,6 +59,7 @@ public class OrderManagementServiceImpl implements IOrderManagementService{
 	/**
 	 * 查询订单详情
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<Map> detailslist(OrderDetail od) {
 		// TODO Auto-generated method stub
 		return oddao.list(od);

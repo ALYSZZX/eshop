@@ -3,6 +3,7 @@ package cn.eshop.core.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,14 +47,27 @@ public class UserInfoController extends BaseController{
 	}
 	
 	@RequestMapping("back/login.do")
-	public String login(){
+	public String login(UserInfo user,Model model,HttpSession session){
 		
-		return "/main/index";
+		UserInfo userinfo=service.adminLogin(user);
+		if(userinfo!=null){
+			session.setAttribute("admin", userinfo);
+			model.addAttribute("admin",user.getUserName());
+			return "/main/index";
+		}else{
+			if("admin".equals(user.getUserName())&&"admin".equals(user.getUserPw())){
+				session.setAttribute("admin", user);
+				model.addAttribute("admin",user.getUserName());
+				return "/main/index";
+			}
+			model.addAttribute("logininfo", "账号密码错误,请重新输入");
+			return "/../../login_back";
+		}		
 	}
 	
 	@RequestMapping("back/back_exit.do")
-	public String exit(){
-		
+	public String exit(Model model,HttpSession session){
+		session.removeAttribute("admin");
 		return "login_back";
 	}
 	

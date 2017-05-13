@@ -78,5 +78,8 @@
 	<select id = "userLogin" parameterType="UserInfo" resultMap="usermap">
 	    select * from user_info where user_phone = #{userPhone} and user_pw = #{userPw}
 	</select>
+	<select id = "adminLogin" parameterType="UserInfo" resultMap="usermap">
+	    select * from user_info where user_name = #{userName} and user_pw = #{userPw} and user_type='管理员'
+	</select>
 	
 </mapper>

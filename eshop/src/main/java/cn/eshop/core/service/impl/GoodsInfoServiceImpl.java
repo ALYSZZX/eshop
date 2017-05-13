@@ -28,6 +28,7 @@ public class GoodsInfoServiceImpl implements IGoodsInfoService{
 	/**
 	 * 查询商品信息
 	 */
+	@SuppressWarnings("rawtypes")
 	@Transactional(readOnly=true)
 	public List<Map> getlist(GoodsInfo info) {
 		return goodsdao.getlist(info);
@@ -44,6 +45,7 @@ public class GoodsInfoServiceImpl implements IGoodsInfoService{
 	/**
 	 * 根据条件查询信息
 	 */
+	@SuppressWarnings("rawtypes")
 	@Transactional(readOnly=true)
 	public Map getGoodsInfo(GoodsInfo info) {
 		return goodsdao.getGoodsInfo(info);

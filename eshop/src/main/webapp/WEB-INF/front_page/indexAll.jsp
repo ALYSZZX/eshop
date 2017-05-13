@@ -21,8 +21,22 @@
 
 		<jsp:include page="head.jsp" flush="true"/>
 		<oscache:cache time="5">
-	    <div id="carousel-example-generic" class="carousel slide"
-		data-ride="carousel">
+		<div class="indexleft">
+			<div class="classic">
+				<ul class="classul">
+					<li class="classui"><a href="front/classiclist.shtml?classic=10" target="_blank">家用电器</a></li>
+					<li class="classui"><a href="front/classiclist.shtml?classic=20" target="_blank">数码3C</a></li>
+					<li class="classui"><a href="front/classiclist.shtml?classic=30" target="_blank">电脑办公</a></li>
+					<li class="classui"><a href="front/classiclist.shtml?classic=40" target="_blank">男女服饰</a></li>
+					<li class="classui"><a href="front/classiclist.shtml?classic=50" target="_blank">鞋靴箱包</a></li>
+					<li class="classui"><a href="front/classiclist.shtml?classic=60" target="_blank">食品烟酒</a></li>
+					<li class="classui"><a href="front/classiclist.shtml?classic=70" target="_blank">图书音像</a></li>
+					<li class="classui"><a href="front/classiclist.shtml?classic=80" target="_blank">户外运动</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="indexright">
+	    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -55,7 +69,9 @@
 				<span class="sr-only">Next</span>
 			</a> -->
 	</div>
-	<section id="goods">
+	</div>
+	<div class="clear"></div>
+	<div id="goods">
 		<div class="container">
 			<div class="row">
 				<c:forEach items="${goodslist }" var="goods">
@@ -71,11 +87,11 @@
 				</c:forEach>
 			</div>
 		</div>
-	</section>
+	</div>
 	</oscache:cache>
-	<section id="foot">
+	<div id="foot">
 		<jsp:include page="footer.jsp" flush="true"/>
-	</section>
+	</div>
 	<script type="text/javascript" src="<%=basePath%>res/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>res/js/bootstrap.min.js"></script>
 </body>

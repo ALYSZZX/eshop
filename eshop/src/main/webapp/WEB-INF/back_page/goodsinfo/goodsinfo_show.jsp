@@ -51,6 +51,7 @@ with (thisform)
 <title>添加商品</title>
 </head>
 <body>
+<hr>
 	<form action="<%=basePath%>goods/add.do" id="goodsform" method="post" enctype="multipart/form-data">
 		<div class="addform">
 		<div class="goodsup">
@@ -63,6 +64,14 @@ with (thisform)
 				<div id="baseg">
 					<lable>商品价格</lable>
 					<p class="form-control-static">${goods.goods_price}</p>
+				</div>
+				<div id="baseg">
+					<lable>商品库存</lable>
+					<p class="form-control-static">${goods.goods_count}</p>
+				</div>
+				<div id="baseg">
+					<lable>商品类别</lable>
+					<p class="form-control-static">${goods.goods_type}</p>
 				</div>
 				<div id="baseg">
 					<lable>上传图片大小(150*150px)</lable>

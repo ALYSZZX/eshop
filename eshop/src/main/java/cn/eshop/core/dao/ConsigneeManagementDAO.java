@@ -12,31 +12,40 @@ public interface ConsigneeManagementDAO {
 	 * @param cm
 	 * @return
 	 */
-	public List<Map> getlist(ConsigneeManagement cm);
+	 @SuppressWarnings("rawtypes")
+	List<Map> getlist(ConsigneeManagement cm);
 	
 	/**
 	 * 增加收货人
 	 * @param cm
 	 * @return
 	 */
-	public int add(ConsigneeManagement cm);
+	 int add(ConsigneeManagement cm);
 	/**
 	 * 修改收货人
 	 * @param cm
 	 * @return
 	 */
-	public int update(ConsigneeManagement cm);
+	 int update(ConsigneeManagement cm);
 	/**
 	 * 删除收货人
 	 * @param cm
 	 * @return
 	 */
-	public int delete(ConsigneeManagement cm);
+	int delete(ConsigneeManagement cm);
 	
 	/**
 	 * 获取收货人信息
 	 * @param cm
 	 * @return
 	 */
-	public Map getInfo(ConsigneeManagement cm);
+	@SuppressWarnings("rawtypes")
+	Map getInfo(ConsigneeManagement cm);
+	
+	/**
+	 * 获取所有收货人信息
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	List<Map> getAll();
 }

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8" import="cn.eshop.core.bean.UserInfo"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,6 +8,7 @@
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link type="text/css" rel="stylesheet" href="<%=basePath%>res/css/back_index.css">
 <script type="text/javascript" src="<%=basePath%>res/js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
@@ -21,15 +21,13 @@ $(document).ready(function () {
     $("#goodsm").click(function () {
         $("#goodsm1").toggle();
         $("#goodsm2").toggle();
-        $("#goodsm3").toggle();
     });
     
     $("#orderm").click(function () {
         $("#orderm1").toggle();
-        $("#orderm2").toggle();
     });
-    $("a").click(function(){
-    	$("a").each(function(){
+    $(".alink").click(function(){
+    	$(".alink").each(function(){
     		$(this).css("color","blue");
     	});
     	$(this).css("color","black");
@@ -44,7 +42,7 @@ $(document).ready(function () {
 	  <div class ="index_head">
 		<div id="title">商城后台管理系统</div>
 		<div id="exit">
-			<p>欢迎您，管理员</p>
+			<p>欢迎您，管理员 ${admin}</p>
 			<a href="login_back.jsp">退出</a>
 			<div class="clear"></div>
 		</div>
@@ -54,20 +52,19 @@ $(document).ready(function () {
 	<div class ="index_body">
 		<div class="menu">
 			<dl> 
-   				<dt class="user"><a href="javascript:void(0);" id="userm" >●用户管理</a></dt> 
-				<dd><a href="user/list.do" id="userm1" target="boom">○用户信息</a></dd> 
-				<dd><a href="www.baidu.com" id="userm2" target="boom">○收货地址</a></dd> 
+   				<dt class="user"><a href="javascript:void(0);" id="userm" class="alink">●用户管理</a></dt> 
+				<dd><a href="user/list.do" id="userm1" target="boom" class="alink">○用户信息</a></dd> 
+				<dd><a href="consignee/list.do" id="userm2" target="boom" class="alink">○收货地址</a></dd> 
 			</dl> 
 			<dl> 
-				<dt class="goods"><a href="javascript:void(0);" id="goodsm">●商品管理</a></dt> 
-				<dd><a href="goods/list.do" id="goodsm3" target="boom">○商品信息</a></dd>
-				<dd><a href="goods/loadadd.do" id="goodsm1" target="boom">○添加商品</a></dd>
-				<dd><a href="www.baidu.com" id="goodsm2" target="boom">○上架商品</a></dd>
+				<dt class="goods"><a href="javascript:void(0);" id="goodsm" class="alink">●商品管理</a></dt> 
+				<dd><a href="goods/list.do" id="goodsm1" target="boom" class="alink">○商品信息</a></dd>
+				<dd><a href="goods/loadadd.do" id="goodsm2" target="boom" class="alink">○添加商品</a></dd>
 			</dl> 
 			<dl> 
-				<dt class="order"><a href="javascript:void(0);" id="orderm">●订单管理</a></dt> 
-				<dd><a href="www.baidu.com" id="orderm1" target="boom">○已完成订单</a></dd> 
-				<dd><a href="www.baidu.com" id="orderm2" target="boom">○未完成订单</a></dd> 
+				<dt class="order"><a href="javascript:void(0);" id="orderm" class="alink">●订单管理</a></dt> 
+				<dd><a href="order/list.do" id="orderm1" target="boom" class="alink">○订单查询</a></dd> 
+				<!-- <dd><a href="www.baidu.com" id="orderm2" target="boom" class="alink">○未完成订单</a></dd>  -->
 			</dl> 
 		</div>
 		<div class="boom">

@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.eshop.core.dao.ConsigneeManagementDAO">
 
-	 
+	 <select id="getAll"  resultType="Map" parameterType="ConsigneeManagement">
+	     select * from consignee_management
+	 </select>
 	 <select id="getlist"  resultType="Map" parameterType="ConsigneeManagement">
 	     select * from consignee_management where user_id=#{userId}
 	 </select>
