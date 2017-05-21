@@ -121,18 +121,13 @@ public class FrontGoodsController {
 	 */
 	@RequestMapping("reg.shtml")
 	public String reg(UserInfo user,Model model){
-		
 		try {
-			
 			if(user!=null){
-				//普通用户
-				user.setUserType(Common.USER_TYPE_ONE);
+				user.setUserType(Common.USER_TYPE_ONE);//普通用户
 			}
-			
 			userService.addUser(user);
 			model.addAttribute("info", "恭喜您，注册成功!");
 			return "/login";
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

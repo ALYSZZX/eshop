@@ -63,9 +63,9 @@
 						<div class="cp wow fadeIn" data-wow-delay="1s">
 						    <img src="${imgurl }${goods.goods_url }" style="width: 250px;height: 250px;">
 						    <h4 class="title">${goods.goods_name }</h4>
-						    <%-- <p class="desc">${goods.goods_name }</p> --%>
+						    <p class="desc">库存 : ${goods.goods_count }</p>
 						    <p class="price">￥${goods.goods_price }</p>
-						    <a href="html/${goods.goods_id }.html" class="btn btn-primary">点击查看</a>
+						    <a href="html/${goods.goods_id }.html" class="btn btn-primary" target="_blank">点击查看</a>
 						</div>
 					</div>
 				</c:forEach>

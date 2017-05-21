@@ -34,8 +34,15 @@
 			<td>${om.user_name }</td>
 			<td>${om.consignee_name }</td>
 			<td>${om.order_total }</td>
-			<td>已完成</td>
-			<td><a href="javascript:void(0)" onclick="load('order/details.do?orderId=${om.order_id}');">查看详情</a></td>
+			<td>${om.order_state=='0'?'等待商家确认':'' }
+			${om.order_state=='1'?'已确认,等待发货':'' }
+			${om.order_state=='2'?'已签收':'' }
+			${om.order_state=='3'?'已取消':'' }</td>
+			<td><a href="javascript:void(0)" class ="opret" onclick="load('order/confirmreceipt.shtml?orderId=${om.order_id}');"
+			 style="display:${om.order_state=='0'?'block':'none'};">确认订单 | </a>
+			 <a href="javascript:void(0)" class ="opret" onclick="load('order/cancelorder.shtml?orderId=${om.order_id}');" 
+			style="display:${om.order_state<'2'?'block':'none'};">取消订单 | </a>
+			<a href="javascript:void(0)" class ="opret" onclick="load('order/details.do?orderId=${om.order_id}');">查看详情</a></td>
 		</tr>
 			</c:forEach>
 	</table>

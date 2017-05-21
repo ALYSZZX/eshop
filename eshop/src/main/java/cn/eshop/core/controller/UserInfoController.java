@@ -169,7 +169,8 @@ public class UserInfoController extends BaseController{
 	 *@return 
 	 */
 	@RequestMapping("user/imuser.do")
-	public String uploadExcel(@RequestParam(value="upfile", required = false) MultipartFile file,Model model){
+	public String uploadExcel(@RequestParam(value="upfile",
+				required = false) MultipartFile file,Model model){
 		String info ="操作失败";
 		try{
 			service.uploadExcel(file.getInputStream());
