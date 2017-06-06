@@ -31,7 +31,7 @@
 		<c:forEach items="${list}" var="ccm">
 			<tr>
 				<td>${ccm.consignee_id }</td>
-				<td>${ccm.user_id }</td>
+				<td>${ccm.user_name }</td>
 				<td>${ccm.consignee_name }</td>
 				<td>${ccm.consignee_address }</td>
 				<td>${ccm.consignee_code }</td>

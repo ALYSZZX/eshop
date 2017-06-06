@@ -17,12 +17,20 @@ public interface OrderManagementDAO {
 	 * @param om
 	 * @return
 	 */
-	public int addorder(OrderManagement om);
+	int addorder(OrderManagement om);
 	
 	/**
 	 * 查询订单信息
 	 * @param om
 	 * @return
 	 */
-	public List<Map> list(OrderManagement om);
+	@SuppressWarnings("rawtypes")
+	List<Map> list(OrderManagement om);
+	/**
+	 * 修改订单
+	 * @param om
+	 */
+	void update(OrderManagement om);
+
+	long getCount(OrderManagement om);
 }

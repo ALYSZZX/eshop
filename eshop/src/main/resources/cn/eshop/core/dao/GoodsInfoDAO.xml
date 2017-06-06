@@ -48,7 +48,7 @@
 	 </select>
 	 
 	 <select id="getGoodsInfo" parameterType="GoodsInfo" resultType="Map">
-	     select goods_id,goods_name,goods_price,goods_url,goods_desc,goods_state,goods_count,goods_type from goods_info
+	     select * from goods_info
 	     where goods_id = #{goodsId}
 	 </select>
 	 
@@ -75,6 +75,24 @@
 	         </if>
 	         <if test="goodsType!=null">
 	             goods_type=#{goodsType},
+	         </if>
+	     </set>
+	     where goods_id=#{goodsId}
+	 </update>
+	 <!-- 库存管理 -->
+	 <select id="getGoodsCount" parameterType="GoodsInfo" resultType="Integer">
+	     select goods_count from goods_info
+	     <where>
+	         <if test="goodsId!=null and goodsId!=''">
+	             and goods_id=#{goodsId}
+	         </if> 
+	     </where>
+	 </select>
+	 <update id="updateCount" parameterType="GoodsInfo">
+	     update goods_info
+	     <set>
+	         <if test="goodsCount!=null">
+	             goods_count=goods_count + #{goodsCount}
 	         </if>
 	     </set>
 	     where goods_id=#{goodsId}

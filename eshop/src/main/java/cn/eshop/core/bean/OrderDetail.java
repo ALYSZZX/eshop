@@ -7,6 +7,18 @@ package cn.eshop.core.bean;
  */
 public class OrderDetail {
 
+	//订单明细ID
+	private Integer orderDetailId;
+	//订单ID
+	private Integer orderId;
+	//商品ID
+	private Integer goodsId;
+	//商品数量
+	private Integer orderNumber;
+	//商品价格
+	private Double orderPrice;
+
+	private String goodsName;
 	@Override
 	public String toString() {
 		return "OrderDetail [orderDetailId=" + orderDetailId + ", orderId="
@@ -14,22 +26,11 @@ public class OrderDetail {
 				+ orderNumber + ", orderPrice=" + orderPrice + ", goodsName="
 				+ goodsName + ", goodsUrl=" + goodsUrl + "]";
 	}
-	//订单明细ID
-	private Integer orderDetailId;
-	//订单ID
-	private Integer orderId;
-	//商品ID
-	private Integer goodsId;
-	//订单数量
-	private Integer orderNumber;
-	//商品价格
-	private Double orderPrice;
-	
-	public String goodsName;
 
 	public String getGoodsName() {
 		return goodsName;
 	}
+	
 	public void setGoodsName(String goodsName) {
 		this.goodsName = goodsName;
 	}

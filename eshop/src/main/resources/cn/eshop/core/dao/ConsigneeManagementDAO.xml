@@ -3,7 +3,7 @@
 <mapper namespace="cn.eshop.core.dao.ConsigneeManagementDAO">
 
 	 <select id="getAll"  resultType="Map" parameterType="ConsigneeManagement">
-	     select * from consignee_management
+	     select a.user_name ,b.* from consignee_management b, user_info a where a.user_id =b.user_id
 	 </select>
 	 <select id="getlist"  resultType="Map" parameterType="ConsigneeManagement">
 	     select * from consignee_management where user_id=#{userId}

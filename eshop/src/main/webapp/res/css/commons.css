@@ -124,7 +124,7 @@
 
 /*index all*/
 .indexleft{
-	width:305px;
+	width:300px;
 	min-height:600px;
 	background-color: #FFF;
 	position:absolute;
@@ -137,7 +137,7 @@
 	margin-left: 10%;
 }
 .classic{
-	width: 205px;
+	width: 200px;
 	min-height:600px;
 	background-color: #FAF0E6;
 	margin-left: 105px;
@@ -165,4 +165,30 @@ li:hover{
 }
 .opret{
 	float:left;
+}
+.his {
+	float:left;
+    min-height:100px;
+    text-align: center;
+}
+.histext{
+	color:red;
+	font-size: 24px;
+	padding-top: 10px;
+}
+.hisdiv2{
+	width:180px;
+    min-height:200px;
+    background-color:#3399FF;
+}
+.hisdiv2_1{
+    position:fixed;
+    width:180px;
+    min-height:200px;
+    z-index:999;
+    background-color:#3399FF;
+    top:0px;
+    _position:absolute;
+    _bottom:auto;
+    _top:expression(eval(document.documentElement.scrollTop));
 }

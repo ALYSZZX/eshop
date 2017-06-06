@@ -141,6 +141,8 @@ public class GoodsController extends BaseController{
 		try {
 			if(goodsinfo!=null){
 				goodsinfo.setGoodsState(Common.GOODS_STATE_INIT);
+				goodsinfo.setGoodsType(goodsinfo.getGoodsType().trim());
+				goodsinfo.setGoodsName(goodsinfo.getGoodsName().trim());
 			}
 			//System.out.println(goodsinfo.getGoodsType());
 			service.add(goodsinfo);

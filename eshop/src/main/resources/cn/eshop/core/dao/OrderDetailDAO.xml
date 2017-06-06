@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.eshop.core.dao.OrderDetailDAO">
-
+	<resultMap type="cn.eshop.core.bean.OrderDetail" id="orderDetail">
+		<id column="order_detail_id" property="orderDetailId"/>
+		<result column="order_id" property="orderId"/>
+		<result column="goods_id" property="goodsId"/>
+		<result column="order_number" property="orderNumber"/>
+		<result column="order_price" property="orderPrice"/>
+	</resultMap>
 	 
 	 <insert id="add" parameterType="OrderDetail" >
 	 	insert into order_detail (order_id,goods_id,order_number,order_price)
@@ -17,4 +23,10 @@
 		 </if>
 	 </select>
 	 
+	 <select id="getOrderDetial" parameterType="OrderDetail" resultType="Map">
+		 select * from order_detail
+		 <if test="orderId !=null">
+		 	where order_id =#{orderId}
+		 </if>
+	 </select>
 </mapper>

@@ -58,4 +58,9 @@ public class GoodsInfoServiceImpl implements IGoodsInfoService{
 		goodsdao.update(info);
 	}
 
+	@Override
+	public int getGoodsCount(GoodsInfo goods) {
+		return goodsdao.getGoodsCount(goods);
+	}
+
 }

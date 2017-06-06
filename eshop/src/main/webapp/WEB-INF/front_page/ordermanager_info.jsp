@@ -4,7 +4,8 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="pg" uri="http://jsptags.com/tags/navigation/pager"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,13 +39,18 @@
 			${om.order_state=='1'?'已确认,等待发货':'' }
 			${om.order_state=='2'?'已签收':'' }
 			${om.order_state=='3'?'已取消':'' }</td>
-			<td><a href="javascript:void(0)" class ="opret" onclick="load('adminorder/cancelorder.shtml?orderId=${om.order_id}');" 
-			style="display:${om.order_state<'1'?'block':'none'};">取消订单 | </a>
-			<a href="javascript:void(0)" class ="opret" onclick="load('adminorder/confirmreceipt.shtml?orderId=${om.order_id}');"
-			 style="display:${om.order_state=='1'?'block':'none'};">确认收货 | </a>
-			<a href="javascript:void(0)" class ="opret" onclick="load('adminorder/detailslist.shtml?orderId=${om.order_id}');">查看详情</a></td>
+			<td><a href="adminorder/cancelorder.shtml?orderId=${om.order_id}" class="btn btn-danger btn-sm" style="display:${om.order_state<'1'?'block':'none'};  float:left;">取消订单 </a>
+			<a href="adminorder/confirmreceipt.shtml?orderId=${om.order_id}" class="btn btn-success btn-sm" style="display:${om.order_state=='1'?'block':'none'};  float:left;">确认收货  </a>
+			<a href="adminorder/confirmreceipt.shtml?orderId=${om.order_id}" class="btn btn-danger btn-sm" style="display:${om.order_state=='2'?'block':'none'};  float:left;">申请退货  </a>
+			<a href="javascript:void(0)" class="btn btn-info btn-sm" onclick="load('adminorder/detailslist.shtml?orderId=${om.order_id}');" style="float:left">查看详情</a></td>
 		</tr>
 			</c:forEach>
 	</table>
+	<div align="center" style="padding: 10px; font-size: 20px">
+		<pg:pager items="${total}" url="adminorder/queryOrder.shtml" maxIndexPages="10" export="currentPageNumber=pageNumber" scope="request">
+				<!--<pg:param name="user.userName" value="${user.userName}" />-->
+				<jsp:include page="../../res/jsp/pager_tag.jsp" flush="true" />
+		</pg:pager>
+	</div>
 </body>
 </html>

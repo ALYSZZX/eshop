@@ -24,5 +24,15 @@ public interface OrderDetailDAO {
 	 * @param od
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<Map> list(OrderDetail od);
+	
+	/**
+	 * 获取单个订单详情
+	 * @param od
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public List<Map> getOrderDetial(OrderDetail od);
+	
 }

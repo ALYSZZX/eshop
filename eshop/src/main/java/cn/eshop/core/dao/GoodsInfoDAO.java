@@ -21,7 +21,8 @@ public interface GoodsInfoDAO {
 	 /**
 	  * 查找商品
 	  */
-	 public List<Map> getlist(GoodsInfo info);
+	 @SuppressWarnings("rawtypes")
+	public List<Map> getlist(GoodsInfo info);
 	 
 	 /**
 	  * 查询总记录
@@ -33,7 +34,8 @@ public interface GoodsInfoDAO {
 	  * @param info
 	  * @return
 	  */
-	 public Map getGoodsInfo(GoodsInfo info);
+	 @SuppressWarnings("rawtypes")
+	public Map getGoodsInfo(GoodsInfo info);
 	 
 	 /**
 	  * 修改信息
@@ -41,4 +43,16 @@ public interface GoodsInfoDAO {
 	  * @return
 	  */
 	 public int update(GoodsInfo info);
+
+	 /**
+	  * 修改库存
+	  * @param info
+	  */
+	 void updateCount(GoodsInfo info);
+	 /**
+	  * 获取库存
+	  * @param info
+	  * @return
+	  */
+	 int getGoodsCount(GoodsInfo info);
 }

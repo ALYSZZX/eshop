@@ -21,6 +21,35 @@
 
 		<jsp:include page="head.jsp" flush="true"/>
 		<oscache:cache time="5">
+		<!-- 侧栏显示 -->
+		<div class="his">
+	    	<div id="hisdiv2" class="hisdiv2">
+		    	<div class="histext"><p>为您推荐</p></div>
+		    	<div class="container">
+					<c:forEach items="${historylist}" var="goods">
+						<div class="row">
+							<div class="col-sm-12" style="margin-top:10px;">
+								<div class="cp wow fadeIn" data-wow-delay="1s">
+									  <a href="html/${goods.goods_id }.html" class="btn btn-primary" target="_blank"> 
+									   	<img src="${imgurl }${goods.goods_url }" style="width: 100px;height: 100px;">
+									  </a>
+									  <h5 class="title">${goods.goods_name }</h5>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+					<div class="row">
+							<div class="col-sm-12" style="margin-top:10px;">
+								<div class="cp wow fadeIn" data-wow-delay="1s">
+									<h5>后台客服1QQ:12345670</h5>
+									<h5>后台客服2QQ:12345671</h5>
+									<h5>后台客服3QQ:12345672</h5>
+								</div>
+							</div>
+					</div>
+			   </div>
+	    	</div>
+		</div>
 		<div class="indexleft">
 			<div class="classic">
 				<ul class="classul">
@@ -81,7 +110,9 @@
 						    <h4 class="title">${goods.goods_name }</h4>
 						     <p class="desc">库存 : ${goods.goods_count }</p>
 						    <p class="price">￥${goods.goods_price }</p>
-						    <a href="html/${goods.goods_id }.html" class="btn btn-primary" target="_blank">点击查看</a>
+						   <!--  <a href="html/${goods.goods_id }.html" class="btn btn-primary" target="_blank">点击查看</a>
+						    -->
+						     <a href="javascript:void(0)" class="btn btn-primary" target="_blank" id="getHtml" onclick="getHtml(${goods.goods_id});">点击查看</a>
 						</div>
 					</div>
 				</c:forEach>
@@ -94,5 +125,39 @@
 	</div>
 	<script type="text/javascript" src="<%=basePath%>res/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>res/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	window.onscroll=function(){ 
+	    var t=document.documentElement.scrollTop||document.body.scrollTop;  
+	    var div2=document.getElementById("hisdiv2"); 
+	    if(t>= 100){ 
+	        div2.className = "hisdiv2_1";
+	    }else{
+	        div2.className = "hisdiv2";
+	    } 
+	}
+	
+	function getHtml(goodsId){
+		var uri = "http://localhost:8080/eshop/front/history/"+goodsId+".shtml";
+		$.ajax({
+	        url: uri, 
+	        type: "get",
+	        cache:false, 
+	        contentType:"application/json",
+	        dataType:"text",
+	        data: {goodsId:goodsId},
+	        success: function(data){
+	        	var el = document.createElement("a");
+	        	document.body.appendChild(el);
+	        	el.href = "html/"+data+".html"; //url 是你得到的连接
+	        	el.target = '_blank'; //指定在新窗口打开
+	        	el.click();
+	        	document.body.removeChild(el);
+	        },
+	        error:function(XMLHttpRequest, textStatus, errorThrown){
+	            alert(XMLHttpRequest.status);
+	        }
+	    });  
+	};
+	</script>
 </body>
 </html>

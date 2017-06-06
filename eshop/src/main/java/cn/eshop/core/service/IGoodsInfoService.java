@@ -26,4 +26,10 @@ public interface IGoodsInfoService {
 	
 	//修改商品信息
 	public void update(GoodsInfo info);
+	/**
+	 * 获取商品库存
+	 * @param goods
+	 * @return
+	 */
+	public int getGoodsCount(GoodsInfo goods);
 }

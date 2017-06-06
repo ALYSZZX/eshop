@@ -120,12 +120,8 @@ $(document).ready(function () {
             |
             <a target="_blank" href="" clstag="pageclick|keycount|20150112ABD|9">English Site</a>
         </div>
-            <div class="copyright">
-            Copyright&nbsp;©&nbsp;2000-2016&nbsp;&nbsp;商城shop.com&nbsp;版权所有
-            </div>
 		</div>
 	  </div>
 	</div>
-  </div>
 </body>
 </html>

@@ -41,6 +41,7 @@
 					</div>
 					<div class="ok1" style="display:${info=='no'?'block':'none'}">
 						<h1 style="color:red;">下单失败</h1>
+						<h3>可能是因为订单中商品库存不足造成，请联系后台服务人员</h3>
 					</div>
 				</div>
 				<div class="cool-sm-2"></div>
